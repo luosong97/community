@@ -1,0 +1,46 @@
+github:
+  client_id: 6bfc99a969d394acfa38
+  client_secret: e472267079a37c1cb9b04eab59013aa5b41ef8eb
+  redirect_uri: http://localhost:8080/callback
+
+ucloud:
+  ufile:
+    public-key: 11111
+    private-key: 22222
+    backet-name: mawen
+    region: cn-bj
+    suffix: ufileos.com
+    expires: 315360000
+
+spring:
+  datasource:
+    url: jdbc:h2:D:/H2/H2
+    username: root
+    password: 123456
+    driver-class-name: org.h2.Driver
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  type-aliases-package: life.luosong.community.mapper
+  mapper-locations: classpath:mapper/*.xml
+
+  spring:
+    jpa:
+      open-in-view: true
+
+file: community.log
+level: ''
+logging: ''
+max-history: 30
+max-size: 100MB
+root: info
+
+
+
+
+
+
+
+
+

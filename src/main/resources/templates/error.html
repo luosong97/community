@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>luosong's first web</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="/css/community.css">
+    <script src="/js/jquery.3.4.1.min.js"></script>
+    <script src="/js/bootstrap.min.js" type="application/javascript"></script>
+
+</head>
+<body>
+<div th:insert="navigation::nav"></div>
+<div class="container-fluid main" >
+    <div class="row">
+            <div class="jumbotron">
+                <h1>出错啦!!!</h1>
+                <p th:text="${message}">服务太热啦，要不然等下再来~</p>
+                <p><a class="btn btn-primary btn-lg" href="/" role="button">回到主页</a></p>
+            </div>
+    </div>
+</div>
+<div th:insert="~{footer:: foot}"></div>
+</body>
+</html>
