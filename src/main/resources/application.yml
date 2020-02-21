@@ -5,9 +5,9 @@ github:
 
 ucloud:
   ufile:
-    public-key: 11111
-    private-key: 22222
-    backet-name: mawen
+    public-key: TOKEN_521e4bae-4c2a-4e7e-813d-feeadd4bf034
+    private-key: 17c2292a-3c5b-425b-b431-72eccca0ee93
+    backet-name: luosong
     region: cn-bj
     suffix: ufileos.com
     expires: 315360000
