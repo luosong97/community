@@ -1,7 +1,7 @@
 github:
   client_id: 6bfc99a969d394acfa38
-  client_secret: e472267079a37c1cb9b04eab59013aa5b41ef8eb
-  redirect_uri: http://117.50.99.22/callback
+  client_secret: 11d10f0f7e6682dd891167c1163c1e7071fe1929
+  redirect_uri: http://localhost:8080/callback
 
 ucloud_ufile:
   ufile:

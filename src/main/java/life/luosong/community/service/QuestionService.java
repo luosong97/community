@@ -11,6 +11,7 @@ import life.luosong.community.mapper.UserMapper;
 import life.luosong.community.model.Question;
 import life.luosong.community.model.QuestionExample;
 import life.luosong.community.model.User;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.BeanUtils;
@@ -23,6 +24,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@Slf4j
 public class QuestionService {
 
     @Autowired
@@ -45,6 +47,7 @@ public class QuestionService {
         QuestionQueryDTO questionQueryDTO = new QuestionQueryDTO();
         questionQueryDTO.setSearch(search);
         Integer totalCount =  questionExtMapper.countBySearch(questionQueryDTO);
+
 
         if(totalCount % size == 0) {
             totalPage = totalCount / size;

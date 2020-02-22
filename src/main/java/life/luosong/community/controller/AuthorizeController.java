@@ -56,6 +56,12 @@ public class AuthorizeController {
 
         if ( githubUser != null ){
 
+            if(githubUser.getLogin() == null && githubUser.getAvatar_url() == null){
+                log.error("callback get github error,{}",githubUser);
+                //登录失败
+                return "redirect:/";
+            }
+
             User user = new User();
             String token = UUID.randomUUID().toString();
             user.setToken(token); //随机uuid
