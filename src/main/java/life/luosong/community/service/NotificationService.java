@@ -1,8 +1,7 @@
 package life.luosong.community.service;
 
-import life.luosong.community.advice.CustomizeExceptionHandler;
 import life.luosong.community.dto.NotificationDTO;
-import life.luosong.community.dto.PagenationDTO;
+import life.luosong.community.dto.PaginationDTO;
 import life.luosong.community.enums.NotificationStatusEnum;
 import life.luosong.community.enums.NotificationTypeEnum;
 import life.luosong.community.exception.CustomizeErrorCode;
@@ -29,8 +28,8 @@ public class NotificationService {
     @Autowired
     private UserMapper userMapper;
 
-    public PagenationDTO list(Long userId, Integer page, Integer size) {
-        PagenationDTO<NotificationDTO> pagenationDTO = new PagenationDTO<>();
+    public PaginationDTO list(Long userId, Integer page, Integer size) {
+        PaginationDTO<NotificationDTO> paginationDTO = new PaginationDTO<>();
         Integer totalPage;
 
         NotificationExample notificationExample = new NotificationExample();
@@ -57,7 +56,7 @@ public class NotificationService {
             offset = 0;
         }
 
-        pagenationDTO.setPagenation(totalPage,page);
+        paginationDTO.setpagination(totalPage,page);
 
         NotificationExample example = new NotificationExample();
         example.createCriteria().andReceiverEqualTo(userId);
@@ -65,7 +64,7 @@ public class NotificationService {
         List<Notification> notifications = notificationMapper.selectByExampleWithRowbounds(example,new RowBounds(offset,size) );
 
         if(notifications.size() == 0){
-            return pagenationDTO;
+            return paginationDTO;
         }
 
         List<NotificationDTO> notificationDTOS = new ArrayList<>();
@@ -77,8 +76,8 @@ public class NotificationService {
             notificationDTOS.add(notificationDTO);
         }
 
-        pagenationDTO.setData(notificationDTOS);
-        return pagenationDTO;
+        paginationDTO.setData(notificationDTOS);
+        return paginationDTO;
     }
 
     public Long unreadCount(Long userId) {

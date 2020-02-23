@@ -1,16 +1,13 @@
 package life.luosong.community.controller;
 
 import life.luosong.community.dto.NotificationDTO;
-import life.luosong.community.dto.PagenationDTO;
 import life.luosong.community.enums.NotificationTypeEnum;
 import life.luosong.community.model.User;
 import life.luosong.community.service.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 

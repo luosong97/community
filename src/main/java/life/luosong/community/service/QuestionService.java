@@ -1,6 +1,6 @@
 package life.luosong.community.service;
 
-import life.luosong.community.dto.PagenationDTO;
+import life.luosong.community.dto.PaginationDTO;
 import life.luosong.community.dto.QuestionDTO;
 import life.luosong.community.dto.QuestionQueryDTO;
 import life.luosong.community.exception.CustomizeErrorCode;
@@ -36,7 +36,7 @@ public class QuestionService {
     @Autowired
     private QuestionExtMapper questionExtMapper;
 
-    public PagenationDTO list(String search, Integer page, Integer size) {
+    public PaginationDTO list(String search, String tag, Integer page, Integer size) {
         if(StringUtils.isNoneBlank(search)){
             String tags[] = StringUtils.split(search," ");
             String regexTag =  Arrays.stream(tags).collect(Collectors.joining("|"));
@@ -46,6 +46,8 @@ public class QuestionService {
         Integer totalPage;
         QuestionQueryDTO questionQueryDTO = new QuestionQueryDTO();
         questionQueryDTO.setSearch(search);
+        questionQueryDTO.setTag(tag);
+
         Integer totalCount =  questionExtMapper.countBySearch(questionQueryDTO);
 
 
@@ -68,15 +70,15 @@ public class QuestionService {
             offset = 0;
         }
 
-        PagenationDTO pagenationDTO = new PagenationDTO();
+        PaginationDTO paginationDTO = new PaginationDTO();
 
-        pagenationDTO.setPagenation(totalPage,page);
+        paginationDTO.setpagination(totalPage,page);
 
         if(page < 1){
             page = 1;
         }
-        if(page > pagenationDTO.getTotalPage()){
-            page = pagenationDTO.getTotalPage();
+        if(page > paginationDTO.getTotalPage()){
+            page = paginationDTO.getTotalPage();
         }
 
         QuestionExample example = new QuestionExample();
@@ -98,12 +100,12 @@ public class QuestionService {
           questionDTO.setUser(user);
           questionDTOList.add(questionDTO);
         }
-        pagenationDTO.setData(questionDTOList);
+        paginationDTO.setData(questionDTOList);
 
-        return pagenationDTO;
+        return paginationDTO;
     }
 
-    public PagenationDTO list( Long userId, Integer page, Integer size) {
+    public PaginationDTO list(Long userId, Integer page, Integer size) {
 
         Integer totalPage;
 
@@ -131,10 +133,10 @@ public class QuestionService {
             offset = 0;
         }
 
-        PagenationDTO pagenationDTO = new PagenationDTO();
+        PaginationDTO paginationDTO = new PaginationDTO();
 
 
-        pagenationDTO.setPagenation(totalPage,page);
+        paginationDTO.setpagination(totalPage,page);
 
         QuestionExample example = new QuestionExample();
         example.createCriteria().andCreatorEqualTo(userId);
@@ -149,9 +151,9 @@ public class QuestionService {
             questionDTO.setUser(user);
             questionDTOList.add(questionDTO);
         }
-        pagenationDTO.setData(questionDTOList);
+        paginationDTO.setData(questionDTOList);
 
-        return pagenationDTO;
+        return paginationDTO;
     }
 
     public QuestionDTO getById(Long id) {

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-public class PagenationDTO<T> {
+public class PaginationDTO<T> {
     private List<T> data;
     private boolean showPrevious;
     private boolean showFirstPrevious;
@@ -17,7 +17,7 @@ public class PagenationDTO<T> {
     private List<Integer> pages = new ArrayList<>();
     private Integer totalPage;
 
-    public void setPagenation(Integer totalPage, Integer page ){
+    public void setpagination(Integer totalPage, Integer page ){
 
         this.totalPage = totalPage;
         this.page = page;

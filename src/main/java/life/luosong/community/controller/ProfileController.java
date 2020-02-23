@@ -1,6 +1,6 @@
 package life.luosong.community.controller;
 
-import life.luosong.community.dto.PagenationDTO;
+import life.luosong.community.dto.PaginationDTO;
 import life.luosong.community.mapper.UserMapper;
 import life.luosong.community.model.User;
 import life.luosong.community.service.NotificationService;
@@ -39,15 +39,15 @@ public class ProfileController {
         }
 
         if("questions".equals(action)){
-            PagenationDTO pagenation = questionService.list(user.getId(),page,size) ;
-            model.addAttribute("pagenation",pagenation);
+            PaginationDTO pagination = questionService.list(user.getId(),page,size) ;
+            model.addAttribute("pagination",pagination);
             model.addAttribute("section","questions");
             model.addAttribute("sectionName","我的提问");
         }else if ("replies".equals(action)){
-            PagenationDTO pagenationDTO = notificationService.list(user.getId(),page,size);
+            PaginationDTO paginationDTO = notificationService.list(user.getId(),page,size);
             model.addAttribute("section","replies");
             model.addAttribute("sectionName","最新回复");
-            model.addAttribute("pagenation",pagenationDTO);
+            model.addAttribute("pagination",paginationDTO);
         }
 
         return "profile";
